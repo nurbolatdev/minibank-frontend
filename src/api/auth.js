@@ -1,9 +1,35 @@
-import { http } from "./http";
+import { http } from "/https.js";
+import { tokenService } from "/src/service/tokenService";
 
-export const register = (email, password) =>
-    http.post("/auth/register", { email, password });
+export const authApi = {
 
-export const login = (email, password) =>
-    http.post("/auth/login", { email, password });
+    async register(email, password) {
+        return http.post("/auth/register", {
+            email,
+            password
+        });
+    },
 
-export const me = () => http.get("/users/me");
+    async login(email, password) {
+
+        const response = await http.post("/auth/login", {
+            email,
+            password
+        });
+
+        const token = response.data.token;
+
+        tokenService.setToken(token);
+
+        return response.data;
+    },
+
+    async me() {
+        return http.get("/users/me");
+    },
+
+    logout() {
+        tokenService.removeToken();
+    }
+
+};

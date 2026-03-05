@@ -1,25 +1,28 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { tokenService } from "/src/service/tokenService";
 
-const AuthCtx = createContext(null);
+const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-    const [token, setToken] = useState(localStorage.getItem("token"));
 
-    const value = useMemo(() => ({
-        token,
-        isAuthed: !!token,
-        setToken: (t) => {
-            setToken(t);
-            if (t) localStorage.setItem("token", t);
-            else localStorage.removeItem("token");
-        },
-        logout: () => {
-            setToken(null);
-            localStorage.removeItem("token");
-        },
-    }), [token]);
+    const [isAuth, setIsAuth] = useState(tokenService.isLoggedIn());
 
-    return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
+    const login = (token) => {
+        tokenService.setToken(token);
+        setIsAuth(true);
+    };
+
+    const logout = () => {
+        tokenService.removeToken();
+        setIsAuth(false);
+    };
+
+    return (
+        <AuthContext.Provider value={{ isAuth, login, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
+
 }
 
-export const useAuth = () => useContext(AuthCtx);
+export const useAuth = () => useContext(AuthContext);
