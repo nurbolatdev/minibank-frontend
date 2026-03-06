@@ -1,4 +1,4 @@
-import { http } from "/https.js";
+import { http } from "../api/https.js";
 import { tokenService } from "/src/service/tokenService";
 
 export const authApi = {
@@ -33,3 +33,4 @@ export const authApi = {
     }
 
 };
+

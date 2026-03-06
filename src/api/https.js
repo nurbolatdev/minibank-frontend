@@ -6,7 +6,7 @@ export const http = axios.create({
     timeout: 10000
 });
 
-// request interceptor
+
 http.interceptors.request.use((config) => {
 
     const token = tokenService.getToken();
