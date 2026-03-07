@@ -1,0 +1,9 @@
+.dash-title { font-size: 28px; margin: 0 0 6px; }
+.dash-sub { margin: 0 0 18px; color: var(--muted); }
+
+.dash-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
