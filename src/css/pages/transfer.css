@@ -1,0 +1,10 @@
+.transfer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.transfer-tip {
+    color: var(--muted);
+    font-size: 13px;
+}
