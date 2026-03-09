@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import logo from "../src/assets/logo.png";
 
 export default function App() {
     return (
@@ -8,7 +9,7 @@ export default function App() {
             <header className="app-header">
                 <div className="app-header-inner">
                     <Link to="/" className="brand">
-                        <span className="brand-badge" />
+                        <img src={logo} alt="Company Logo" className="brand-badge" />
                         <span>MiniBank</span>
                     </Link>
 
