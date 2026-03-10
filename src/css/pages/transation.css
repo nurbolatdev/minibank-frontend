@@ -1,0 +1,10 @@
+.tx-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tx-controls input {
+    max-width: 260px;
+}
