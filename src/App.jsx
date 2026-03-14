@@ -2,6 +2,11 @@ import { Routes, Route, Link } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import logo from "../src/assets/logo.png";
+import RequireAuth from "./auth/RequireAuth.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Accounts from "./pages/Accounts.jsx";
+import Transfer from "./pages/Transfer.jsx";
+import Transactions from "./pages/Transactions.jsx";
 
 export default function App() {
     return (
@@ -26,6 +31,10 @@ export default function App() {
                 <Routes>
                     <Route path="/login" element={<Login/>} />
                     <Route path="/register" element={<Register/>} />
+                    <Route path="/" element={<RequireAuth><Dashboard/></RequireAuth>} />
+                    <Route path="/accounts" element={<RequireAuth><Accounts/></RequireAuth>} />
+                    <Route path="/transfer" element={<RequireAuth><Transfer/></RequireAuth>} />
+                    <Route path="/transactions" element={<RequireAuth><Transactions/></RequireAuth>} />
 
                 </Routes>
             </main>

@@ -1,4 +1,4 @@
-import { http } from "/https.js";
+import { http } from "./https.js";
 
 export const transferApi = {
 

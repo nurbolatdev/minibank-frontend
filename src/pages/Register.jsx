@@ -16,8 +16,15 @@ export default function Register() {
             await authApi.register(email, password);
             setMsg("Готово! Теперь можно войти.");
             setTimeout(() => nav("/login"), 700);
-        } catch {
-            setMsg("Ошибка регистрации (возможно email уже занят)");
+        } catch (error) {
+            console.error("Register error:", error);
+
+            const backendMessage =
+                error?.response?.data?.message ||
+                error?.response?.data?.error ||
+                "Registration failed";
+
+            setMsg(backendMessage);
         }
     };
 
