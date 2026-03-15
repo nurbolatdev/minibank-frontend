@@ -16,7 +16,7 @@ export default function Login() {
         setErr("");
         try {
             const res = await authApi.login(email, password);
-            auth.setToken(res.data.token);
+            auth.login(res.data.token);
             nav("/");
         } catch {
             setErr("Неверный email или пароль");
