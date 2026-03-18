@@ -8,7 +8,6 @@ import "./css/theme.css";
 import "./css/global.css";
 import "./css/layout.css";
 import "./css/ui.css";
-
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <BrowserRouter>

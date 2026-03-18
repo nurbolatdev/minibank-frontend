@@ -44,3 +44,9 @@
     margin: 0 auto;
     padding: 24px 16px 40px;
 }
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}

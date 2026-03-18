@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Accounts from "./pages/Accounts.jsx";
 import Transfer from "./pages/Transfer.jsx";
 import Transactions from "./pages/Transactions.jsx";
+import ProfileMenu from "./pages/ProfileMenu.jsx";
 
 export default function App() {
     return (
@@ -24,6 +25,8 @@ export default function App() {
                         <Link className="btn" to="/transfer">Transfer</Link>
                         <Link className="btn" to="/transactions">Transactions</Link>
                     </nav>
+
+                    <ProfileMenu />
                 </div>
             </header>
 

@@ -1,0 +1,95 @@
+.profile-menu-wrapper {
+    position: relative;
+}
+
+.profile-trigger {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: 0.2s ease;
+}
+
+.profile-trigger:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-trigger-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 58px;
+    right: 0;
+    width: 280px;
+    background: rgba(20, 24, 48, 0.96);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 12px;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+}
+
+.profile-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+}
+
+.profile-dropdown-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.profile-email {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+.profile-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 8px 0;
+}
+
+.profile-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.profile-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.profile-item-danger {
+    color: #ff6b81;
+}
