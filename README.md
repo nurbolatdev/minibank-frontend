@@ -1,16 +1,111 @@
-# React + Vite
+# MiniBank Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend for a small banking MVP built with React and Vite. The app connects to a backend API for authentication, account management, transfers, and transaction history.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User registration and login
+- JWT-based authentication
+- Protected routes for authenticated users
+- Account creation with currency selection
+- Account list with pagination
+- Money transfer between accounts
+- Transaction history by account with pagination
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite 7
+- React Router DOM 7
+- Axios
+- ESLint
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+src/
+  api/         API clients and Axios setup
+  auth/        Auth context and route protection
+  pages/       Application pages
+  service/     Token storage helpers
+  css/         Global, layout, UI, and page styles
+  assets/      Static assets
+```
+
+## Getting Started
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Start the development server
+
+```bash
+npm run dev
+```
+
+By default, Vite will start the app locally and print the development URL in the terminal.
+
+## Available Scripts
+
+- `npm run dev` - start the Vite development server
+- `npm run build` - create a production build
+- `npm run preview` - preview the production build locally
+- `npm run lint` - run ESLint
+
+## Backend Configuration
+
+The frontend is configured to call the backend at:
+
+```text
+http://localhost:8080/api
+```
+
+This is defined in [src/api/https.js](/Users/nurbolat/WebstormProjects/minibank-frontend/src/api/https.js).
+
+If your backend runs on a different host or port, update the `baseURL` there.
+
+## Authentication Flow
+
+- JWT tokens are stored in `localStorage`
+- Protected pages are wrapped with `RequireAuth`
+- If the API returns `401 Unauthorized`, the token is removed and the user is redirected to `/login`
+
+Related files:
+
+- [src/auth/AuthContext.jsx](/Users/nurbolat/WebstormProjects/minibank-frontend/src/auth/AuthContext.jsx)
+- [src/auth/RequireAuth.jsx](/Users/nurbolat/WebstormProjects/minibank-frontend/src/auth/RequireAuth.jsx)
+- [src/service/tokenService.js](/Users/nurbolat/WebstormProjects/minibank-frontend/src/service/tokenService.js)
+
+## Routes
+
+Public routes:
+
+- `/login`
+- `/register`
+
+Protected routes:
+
+- `/` - dashboard
+- `/accounts` - account list and account creation
+- `/transfer` - transfer form
+- `/transactions` - transaction history by account
+
+Main routing is defined in [src/App.jsx](/Users/nurbolat/WebstormProjects/minibank-frontend/src/App.jsx).
+
+## API Areas Used by the UI
+
+- Auth: register, login, current user
+- Accounts: create account, list accounts
+- Transfers: create transfer
+- Transactions: fetch account transaction history
+
+API modules live in [src/api](/Users/nurbolat/WebstormProjects/minibank-frontend/src/api).
+
+## Notes
+
+- The current API base URL is hardcoded for local development.
+- Tokens are persisted in browser storage, so logging out clears local auth state.
+- Some UI text is in English and some is in Russian, which is expected in the current implementation.
