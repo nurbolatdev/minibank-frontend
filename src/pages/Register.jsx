@@ -14,6 +14,7 @@ export default function Register() {
         setMsg("");
         try {
             await authApi.register(email, password);
+            localStorage.setItem("user_email", email);
             setMsg("Готово! Теперь можно войти.");
             setTimeout(() => nav("/login"), 700);
         } catch (error) {
